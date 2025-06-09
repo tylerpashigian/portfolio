@@ -1,39 +1,74 @@
-import { createFileRoute } from '@tanstack/react-router'
-import logo from '../logo.svg'
+import { createFileRoute } from '@tanstack/react-router';
+
+import Link from '@/components/link';
+import Contact from '@/components/contact';
+import TextSection from '@/components/text-section';
 
 export const Route = createFileRoute('/')({
   component: App,
-})
+});
 
 function App() {
   return (
-    <div className="text-center">
-      <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
-        <img
-          src={logo}
-          className="h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]"
-          alt="logo"
+    <main className="flex flex-col max-w-3xl h-[100svh] mx-auto p-4 pb-safe-area-inset-bottom">
+      <div className="flex-grow flex flex-col justify-center gap-8">
+        <TextSection title="Tyler Pashigian" description="Frontend Engineer" />
+        <TextSection
+          title="About"
+          description="I build front-end apps with clean, scalable code and intuitive UIs
+            in React and Next.js. I love crafting fast, user-friendly
+            experiences with fluid interactions."
         />
-        <p>
-          Edit <code>src/routes/index.tsx</code> and save to reload.
-        </p>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <a
-          className="text-[#61dafb] hover:underline"
-          href="https://tanstack.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn TanStack
-        </a>
-      </header>
-    </div>
-  )
+        <TextSection
+          title="My Work"
+          description={
+            <div className="space-y-2">
+              <p className="text-secondary-foreground">
+                I am currently working at{' '}
+                <span>
+                  <Link
+                    to="/projects/$project"
+                    // TODO: fix the cast to any
+                    params={{ project: 'sitelogiq' } as any}
+                    viewTransition={{ types: ['fade'] }}
+                  >
+                    SitelogIQ
+                  </Link>
+                </span>{' '}
+                as a lead frontend engineer to help build out mySiteIQ.
+              </p>
+              <p className="text-secondary-foreground">
+                In addition to my day job, I am currently working on{' '}
+                <span>
+                  <Link
+                    to="/projects/$project"
+                    // TODO: fix the cast to any
+                    params={{ project: 'overpassip' } as any}
+                    viewTransition={{ types: ['fade'] }}
+                  >
+                    OverpassIP
+                  </Link>
+                </span>{' '}
+                and{' '}
+                <span>
+                  <Link
+                    to="/projects/$project"
+                    // TODO: fix the cast to any
+                    params={{ project: 'forked' } as any}
+                    viewTransition={{ types: ['fade'] }}
+                  >
+                    Forked
+                  </Link>
+                </span>
+                .
+              </p>
+            </div>
+          }
+        />
+      </div>
+      <div className="flex w-full justify-center flex-shrink-0 p-4">
+        <Contact />
+      </div>
+    </main>
+  );
 }
