@@ -114,11 +114,11 @@ export const projects: Projects = {
             className="absolute inset-0 w-full h-full object-cover"
           />
         </div>
-        <div className="flex gap-2 h-[100px] items-center">
+        <div className="flex gap-2 items-center">
           <img
             src={'/projects/forked-logo.png'}
             alt={'Forked logo'}
-            className="h-full object-contain"
+            className="h-[100px] object-contain"
           />
           <p>
             Forked is a nod to both cooking and software development — like
